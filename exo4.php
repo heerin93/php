@@ -45,7 +45,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=articles', 'root', '', array(PDO::AT
         $req->execute();
         $data = $req->fetchAll();
         foreach($data as $article) {
-            $articleList= $articleList."<li> {$article['nom_article']} : {$article['description_article']} - {$article['prix_article']} euros</li>"; 
+            $articleList= $articleList."<h1>{$article['nom_article']} :</h1> <p>{$article['description_article']}</p> <h2>{$article['prix_article']} euros<h2>"; 
         }
     } catch(EXCEPTION $error) {
         $articleList = $error->getMessage();   
