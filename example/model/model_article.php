@@ -3,7 +3,7 @@
 
 //articleAdd() : je crée la fonction qui me permettra d'ajouter un nouvel article en BDD
 
-function articleAdd($bdd, $nom, $contenu, $prix) {
+function articleAdd($bdd, $name, $content, $prix) {
     //on se connecte à la BDD
     try {
         $req= $bdd->prepare("INSERT INTO article (`nom_article`, `description_article`, `prix_article`) VALUES (?, ?, ?)");
@@ -11,7 +11,7 @@ function articleAdd($bdd, $nom, $contenu, $prix) {
         $req->bindParam(2, $content, PDO::PARAM_STR);
         $req->bindParam(3, $prix, PDO::PARAM_STR);
         $req->execute();
-        return "Nom : $nom - Contenu : $contenu ; a bien été ajouté en BDD";
+        return "Nom : $name - Contenu : $content ; a bien été ajouté en BDD";
     } catch(EXCEPTION $e) {
         return  $e->getMessage();   
     }
@@ -26,7 +26,7 @@ function articleAll($bdd){
         $data = $req->fetchAll();
         $articlesList='';
         foreach($data as $article) {
-            $articleList= $articlesList."<h1>{$article['nom_article']} :</h1> <p>{$article['description_article']}</p> <h2>{$article['prix_article']} euros<h2>"; 
+            $articlesList= $articlesList."<h1>{$article['nom_article']} :</h1> <p>{$article['description_article']}</p> <h2>{$article['prix_article']} euros<h2>"; 
         return $articlesList;
         }
     } catch(EXCEPTION $e) {

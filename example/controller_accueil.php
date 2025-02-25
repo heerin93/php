@@ -29,7 +29,7 @@ if(isset($_POST["submit"])) { //on vérifie qu'on puisse bien envoyer le formula
 
     $bdd = DBconnect();
 
-    $message = articleAdd($bdd, $nom, $contenu, $prix);
+    $message = articleAdd($bdd, $name, $content, $prix);
 }
 
 //include des vues
